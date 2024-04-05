@@ -1,0 +1,35 @@
+What are the types of Pokemon that a Pokemon can have?
+SELECT *
+FROM types;
+ANSWER: Normal, Water, Grass, Rock, Fire, Ground, Poison, Bug, Electric,
+Dragon, Steel, Dark, Fighting, Psychic, Ghost, Fairy, Ice, Flying
+
+What is the name of the Pokemon with id 45?
+SELECT *
+FROM pokemons
+WHERE id = 45;
+ANSWER: Eevee
+
+How many pokemon are there?
+SELECT *
+FROM pokemons;
+ANSWER: 656
+
+How many types are there?
+SELECT *
+FROM types;
+ANSWER: 18 different types
+
+How many pokemon have a secondary type?
+SELECT secondary_type
+FROM pokemons
+WHERE secondary_type IS NOT NULL
+ANSWER: 316 pokemon
+
+What is each pokemons primary type?
+SELECT *
+FROM pokemons
+ANSWER: shows everything in the table and shows types,
+and you can then take those values and compare them to the types table
+
+What is Rufflets secondary type?
