@@ -68,4 +68,9 @@ each trainer with at least one level 100 pokemon have?
 ANSWER: 963
 
 How many pokemon belong to one trainer and no other?
+SELECT COUNT(*) as Pokemons_That_Only_Belong_To_One_Trainer
+FROM(SELECT pokemon_id FROM pokemon_trainer GROUP BY pokemon_trainer.pokemon_id HAVING COUNT( pokemon_trainer.pokemon_id) = 1)
+AS single_trainer_one_pokemon;
+ANSWER: 13
+
 
