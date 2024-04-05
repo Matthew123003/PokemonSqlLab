@@ -61,4 +61,11 @@ ON pokemons.primary_type = types.id;
 
 How many pokemon at level 100 does
 each trainer with at least one level 100 pokemon have?
+ SELECT COUNT(pokemon_id)
+    -> FROM pokemon_trainer
+    -> WHERE pokelevel = 100
+    -> HAVING COUNT(pokelevel = 100) > 0;
+ANSWER: 963
+
+How many pokemon belong to one trainer and no other?
 
