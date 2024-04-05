@@ -49,7 +49,7 @@ SELECT pokemons.name
 ANSWER Wailord, Vileplume
 
 How many pokemon have a secondary type of poison?
-SELECT COUNT(*)
+SELECT COUNT(*) AS "Total Poison Pokemon"
 FROM pokemons
 WHERE secondary_type = 7;
 
@@ -61,11 +61,10 @@ ON pokemons.primary_type = types.id;
 
 How many pokemon at level 100 does
 each trainer with at least one level 100 pokemon have?
- SELECT COUNT(pokemon_id)
-    -> FROM pokemon_trainer
-    -> WHERE pokelevel = 100
-    -> HAVING COUNT(pokelevel = 100) > 0;
-ANSWER: 963
+  SELECT COUNT(*) AS 'Pokemon_at_level_100_per_trainer'
+     -> FROM pokemon_trainer
+     -> WHERE pokelevel = 100
+     -> GROUP BY trainerID;
 
 How many pokemon belong to one trainer and no other?
 SELECT COUNT(*) as Pokemons_That_Only_Belong_To_One_Trainer
@@ -73,4 +72,14 @@ FROM(SELECT pokemon_id FROM pokemon_trainer GROUP BY pokemon_trainer.pokemon_id 
 AS single_trainer_one_pokemon;
 ANSWER: 13
 
+PART 4
 
+SELECT pokemons.name AS "Pokemon Name", trainers.trainername AS "Trainer Name", pokemon_trainer.pokelevel AS "Level", pt.name AS "Primary Type", st.name AS "Secondary Type"
+FROM pokemons
+JOIN types AS pt ON pokemons.primary_type = pt.id
+JOIN types AS st ON pokemons.secondary_type = st.id
+JOIN pokemon_trainer ON pokemon_trainer.pokemon_id = pokemons.id
+JOIN trainers ON pokemon_trainer.trainerID = trainers.trainerID
+ORDER BY Level DESC limit 50;
+
+Gambler is the strongest because they have the most level 100 pokemon I recognise.
